@@ -3,17 +3,15 @@ import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable{
     public final int TILE_SIZE = 48;
-    private final int SCREEN_COLS = 16;
-    private final int SCREEN_ROWS = 12;
+    public final int SCREEN_COLS = 16;
+    public final int SCREEN_ROWS = 16;
     private final int SCREEN_HEIGHT = SCREEN_ROWS * TILE_SIZE;
     private final int SCREEN_WIDTH = SCREEN_COLS * TILE_SIZE;
     private Thread gameThread;
     private KeyControls keyControl;
-    private int playerX = 100;
-    private int playerY = 100;
-    private int playerSpeed = 4;
     private final int FPS = 60;
     private Player player;
+    private TileManager tileManager;
 
     public GamePanel()
     {
@@ -25,6 +23,8 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);
 
         player = new Player(this, keyControl);
+
+        tileManager = new TileManager(this);
     }
 
     public void startGameThread()
@@ -71,6 +71,8 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
 
         Graphics2D graphic = (Graphics2D)g;
+
+        tileManager.draw(graphic);
 
         player.draw(graphic);
 
