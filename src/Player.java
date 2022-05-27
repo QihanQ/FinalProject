@@ -17,6 +17,12 @@ public class Player extends Characters{
         speed = 4;
         direction = "down";
         getPlayerImage();
+
+        hitBox = new Rectangle();
+        hitBox.x = 8;
+        hitBox.y = 16;
+        hitBox.width = 32;
+        hitBox.height = 32;
     }
 
     public void getPlayerImage()
@@ -49,24 +55,49 @@ public class Player extends Characters{
             if(key.upPressed)
             {
                 direction = "up";
-                y -= speed;
             }
             if(key.downPressed)
             {
                 direction = "down";
-                y += speed;
             }
             if(key.leftPressed)
             {
                 direction = "left";
-                x -= speed;
             }
             if(key.rightPressed)
             {
                 direction = "right";
-                x += speed;
             }
 
+            collisionOn = false;
+            gp.collisionChecker.checkTile(this);
+
+            if(collisionOn == false)
+            {
+                switch(direction)
+                {
+                    case "up":
+                    {
+                        y -= speed;
+                        break;
+                    }
+                    case "down":
+                    {
+                        y += speed;
+                        break;
+                    }
+                    case "left":
+                    {
+                        x -= speed;
+                        break;
+                    }
+                    case "right":
+                    {
+                        x += speed;
+                        break;
+                    }
+                }
+            }
             spriteCounter++;
             if(spriteCounter > 10)
             {

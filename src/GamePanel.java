@@ -11,8 +11,8 @@ public class GamePanel extends JPanel implements Runnable{
     private KeyControls keyControl;
     private final int FPS = 60;
     private Player player;
-    private TileManager tileManager;
-
+    public TileManager tileManager;
+    public CollisionChecker collisionChecker;
     public GamePanel()
     {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
@@ -25,6 +25,8 @@ public class GamePanel extends JPanel implements Runnable{
         player = new Player(this, keyControl);
 
         tileManager = new TileManager(this);
+
+        collisionChecker = new CollisionChecker(this);
     }
 
     public void startGameThread()
