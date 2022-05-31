@@ -56,7 +56,7 @@ public class TileManager {
             e.printStackTrace();
         }
     }
-    public void draw(Graphics2D g2)
+    public void drawTiles(Graphics2D g2)
     {
         for(int row = 0; row < gamePanel.SCREEN_ROWS; row++)
         {

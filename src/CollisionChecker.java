@@ -66,4 +66,9 @@ public class CollisionChecker {
             }
         }
     }
+
+    public void checkProjectileCollision(Player player)
+    {
+
+    }
 }
