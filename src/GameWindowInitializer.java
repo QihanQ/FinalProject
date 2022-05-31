@@ -1,8 +1,8 @@
 import javax.swing.*;
 
-public class Game {
+public class GameWindowInitializer {
 
-    public Game()
+    public GameWindowInitializer()
     {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

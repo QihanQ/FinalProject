@@ -1,7 +1,6 @@
 import java.awt.image.BufferedImage;
 
-public class Tile {
+public class BackgroundTile {
     public BufferedImage tileImage;
-    public boolean collision = false;
-
+    public boolean isCollidable = false;
 }

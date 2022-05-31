@@ -4,20 +4,31 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Player extends Characters{
+public class Player extends Entities {
     private GamePanel gp;
     private KeyControls key;
+    private BufferedImage up1;
+    private BufferedImage up2;
+    private BufferedImage up3;
+    private BufferedImage down1;
+    private BufferedImage down2;
+    private BufferedImage down3;
+    private BufferedImage left1;
+    private BufferedImage left2;
+    private BufferedImage left3;
+    private BufferedImage right1;
+    private BufferedImage right2;
+    private BufferedImage right3;
 
-    public Player(GamePanel g , KeyControls k)
+    public Player(GamePanel g, KeyControls k)
     {
-        gp = g;
+        gp =g;
         key = k;
-        y = 100;
-        x = 100;
-        speed = 4;
         direction = "down";
         getPlayerImage();
-
+        xCoord = 384;
+        yCoord = 384;
+        speed = 5;
         hitBox = new Rectangle();
         hitBox.x = 8;
         hitBox.y = 16;
@@ -70,7 +81,7 @@ public class Player extends Characters{
             }
 
             collisionOn = false;
-            gp.collisionChecker.checkTile(this);
+            gp.collisionChecker.checkTileCollision(this);
 
             if(collisionOn == false)
             {
@@ -78,22 +89,22 @@ public class Player extends Characters{
                 {
                     case "up":
                     {
-                        y -= speed;
+                        yCoord -= speed;
                         break;
                     }
                     case "down":
                     {
-                        y += speed;
+                        yCoord += speed;
                         break;
                     }
                     case "left":
                     {
-                        x -= speed;
+                        xCoord -= speed;
                         break;
                     }
                     case "right":
                     {
-                        x += speed;
+                        xCoord += speed;
                         break;
                     }
                 }
@@ -167,6 +178,6 @@ public class Player extends Characters{
                 }
             }
         }
-        g2.drawImage(image, x , y, gp.TILE_SIZE, gp.TILE_SIZE , null);
+        g2.drawImage(image, xCoord , yCoord, gp.TILE_SIZE, gp.TILE_SIZE , null);
     }
 }

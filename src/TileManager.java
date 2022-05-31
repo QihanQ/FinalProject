@@ -2,15 +2,16 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.*;
 
-public class TileManager extends Tile{
+public class TileManager {
     private GamePanel gamePanel;
-    public Tile[] tile;
+
+    public BackgroundTile[] mapTiles;
     public int[][] mapLayout;
 
     public TileManager(GamePanel gp)
     {
         gamePanel = gp;
-        tile = new Tile[3];
+        mapTiles = new BackgroundTile[3];
         mapLayout = new int[gamePanel.SCREEN_ROWS][gamePanel.SCREEN_COLS];
         getTileImage();
         drawMap();
@@ -19,14 +20,14 @@ public class TileManager extends Tile{
     public void getTileImage()
     {
         try{
-            tile[0] = new Tile();
-            tile[0].tileImage = ImageIO.read(new File("Tiles/dirt (2).png"));
-            tile[1] = new Tile();
-            tile[1].tileImage = ImageIO.read(new File("Tiles/tree1.png"));
-            tile[1].collision = true;
-            tile[2] = new Tile();
-            tile[2].tileImage = ImageIO.read(new File("Tiles/cannon2.png"));
-            tile[2].collision = true;
+            mapTiles[0] = new BackgroundTile();
+            mapTiles[0].tileImage = ImageIO.read(new File("Tiles/dirt (2).png"));
+            mapTiles[1] = new BackgroundTile();
+            mapTiles[1].tileImage = ImageIO.read(new File("Tiles/tree1.png"));
+            mapTiles[1].isCollidable = true;
+            mapTiles[2] = new BackgroundTile();
+            mapTiles[2].tileImage = ImageIO.read(new File("Tiles/cannon2.png"));
+            mapTiles[2].isCollidable = true;
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -62,7 +63,7 @@ public class TileManager extends Tile{
             for(int col = 0; col < gamePanel.SCREEN_COLS; col++)
             {
                 int tileNum = mapLayout[row][col];
-                g2.drawImage(tile[tileNum].tileImage, col * gamePanel.TILE_SIZE, row * gamePanel.TILE_SIZE, gamePanel.TILE_SIZE, gamePanel.TILE_SIZE, null);
+                g2.drawImage(mapTiles[tileNum].tileImage, col * gamePanel.TILE_SIZE, row * gamePanel.TILE_SIZE, gamePanel.TILE_SIZE, gamePanel.TILE_SIZE, null);
             }
         }
     }

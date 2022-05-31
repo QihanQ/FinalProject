@@ -13,6 +13,7 @@ public class GamePanel extends JPanel implements Runnable{
     private Player player;
     public TileManager tileManager;
     public CollisionChecker collisionChecker;
+    public CannonProjectile cannonProjectile;
     public GamePanel()
     {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
@@ -27,6 +28,8 @@ public class GamePanel extends JPanel implements Runnable{
         tileManager = new TileManager(this);
 
         collisionChecker = new CollisionChecker(this);
+
+        cannonProjectile = new CannonProjectile(this);
     }
 
     public void startGameThread()
@@ -66,6 +69,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void update()
     {
         player.update();
+        cannonProjectile.upDateCannonBall();
     }
 
     public void paintComponent(Graphics g)
@@ -77,6 +81,8 @@ public class GamePanel extends JPanel implements Runnable{
         tileManager.draw(graphic);
 
         player.draw(graphic);
+
+        cannonProjectile.DrawCannonBall(graphic);
 
         graphic.dispose();
     }
