@@ -7,9 +7,9 @@ public class GamePanel extends JPanel implements Runnable{
     public final int SCREEN_ROWS = 16;
     private final int SCREEN_HEIGHT = SCREEN_ROWS * TILE_SIZE;
     private final int SCREEN_WIDTH = SCREEN_COLS * TILE_SIZE;
+    private final int FPS = 60;
     private Thread gameThread;
     private KeyControls keyControl;
-    private final int FPS = 60;
     private Player player;
     public TileManager tileManager;
     public CollisionChecker collisionChecker;
