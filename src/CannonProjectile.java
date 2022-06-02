@@ -7,14 +7,14 @@ import java.io.IOException;
 public class CannonProjectile extends Entities {
     private BufferedImage cannonBall;
     private GamePanel gamePanel;
-    private Cannon[] cannons;
+    public Cannon[] cannons;
     private int cannonBallSpeed;
     public CannonProjectile(GamePanel gp) {
         gamePanel = gp;
         getCannonBallImage();
         direction = "down";
         initializeCannons();
-        cannonBallSpeed = 4;
+        cannonBallSpeed = 5;
     }
 
     public void initializeCannons()
@@ -48,11 +48,20 @@ public class CannonProjectile extends Entities {
         {
             case "down":
             {
+
+                gamePanel.collisionChecker.checkProjectileCollision(gamePanel.player);
+                if()
                 for(int n = 0; n < cannons.length; n++)
                 {
-                    cannons[n].yCoord += cannonBallSpeed;
+                    if(cannons[n].isShooting)
+                    {
+                        cannons[n].yCoord += cannonBallSpeed;
+                        cannons[n].hitBox.setBounds(cannons[n].xCoord, cannons[n].yCoord, 32, 32);
+                    }
                     if(cannons[n].yCoord + cannonBallSpeed > gamePanel.TILE_SIZE * 15 - 20)
                     {
+                        cannons[n].isShooting = false;
+                        cannons[n].cannonBallStillAlive = false;
                         cannons[n].yCoord = 32;
                     }
                 }
@@ -65,7 +74,18 @@ public class CannonProjectile extends Entities {
     {
         for(int n = 0; n < cannons.length; n++)
         {
-            g2.drawImage(cannonBall, cannons[n].xCoord, cannons[n].yCoord, gamePanel.TILE_SIZE, gamePanel.TILE_SIZE, null);
+            int rand = (int)(Math.random() * 100 + 1);
+            {
+                if(rand >98 && cannons[n].cannonBallStillAlive == false)
+                {
+                   cannons[n].isShooting = true;
+                   cannons[n].cannonBallStillAlive = true;
+                }
+            }
+            if(cannons[n].isShooting)
+            {
+                g2.drawImage(cannonBall, cannons[n].xCoord, cannons[n].yCoord, gamePanel.TILE_SIZE, gamePanel.TILE_SIZE, null);
+            }
         }
     }
 }

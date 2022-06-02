@@ -69,6 +69,13 @@ public class CollisionChecker {
 
     public void checkProjectileCollision(Player player)
     {
-
+        for(int n = 0; n < gamePanel.cannonProjectile.cannons.length; n++)
+        {
+            if(gamePanel.cannonProjectile.cannons[n].hitBox.intersects(player.hitBox))
+            {
+                player.
+                System.out.println("a");
+            }
+        }
     }
 }
