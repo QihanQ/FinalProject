@@ -4,6 +4,7 @@ public class CollisionChecker {
     {
         gamePanel = gp;
     }
+
     public void checkTileCollision(Player player)
     {
         int leftHitboxX = player.xCoord + player.hitBox.x;
@@ -67,15 +68,23 @@ public class CollisionChecker {
         }
     }
 
-    public void checkProjectileCollision(Player player)
+    public void checkProjectileCollision(Player player , Cannon cannon)
     {
-        for(int n = 0; n < gamePanel.cannonProjectile.cannons.length; n++)
+        /*
+        int playerLeftHitboxX = player.xCoord + player.hitBox.x;
+        int playerRightHitboxX = player.xCoord + player.hitBox.x + player.hitBox.width;
+        int playerTopHitboxY = player.yCoord + player.hitBox.y;
+        int playerBottomHitboxY = player.yCoord + player.hitBox.y + player.hitBox.height;
+
+
+        int cannonBallLeftHitBoxX =  cannon.xCoord + cannon.hitBox.x;
+        int cannonBallRightHitBoxX =  cannon.xCoord + cannon.hitBox.x + cannon.hitBox.width;
+        int cannonBallTopHitBoxX =  cannon.yCoord + cannon.hitBox.y;
+        int cannonBallBottomHitBoxX =  cannon.yCoord + cannon.hitBox.y + cannon.hitBox.height;
+        */
+        if(cannon.hitBox.intersects(player.hitBox))
         {
-            if(gamePanel.cannonProjectile.cannons[n].hitBox.intersects(player.hitBox))
-            {
-                player.
-                System.out.println("a");
-            }
+            cannon.hitPlayer = true;
         }
     }
 }

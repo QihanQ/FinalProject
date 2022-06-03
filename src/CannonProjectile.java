@@ -48,27 +48,30 @@ public class CannonProjectile extends Entities {
         {
             case "down":
             {
-
-                gamePanel.collisionChecker.checkProjectileCollision(gamePanel.player);
-                if()
-                for(int n = 0; n < cannons.length; n++)
-                {
-                    if(cannons[n].isShooting)
+                    for(int n = 0; n < cannons.length; n++)
                     {
-                        cannons[n].yCoord += cannonBallSpeed;
-                        cannons[n].hitBox.setBounds(cannons[n].xCoord, cannons[n].yCoord, 32, 32);
+                        gamePanel.collisionChecker.checkProjectileCollision(gamePanel.player, cannons[n]);
+                        if(cannons[n].hitPlayer == false)
+                        {
+                            if(cannons[n].isShooting)
+                            {
+                                System.out.println("a");
+                                cannons[n].yCoord += cannonBallSpeed;
+                                cannons[n].hitBox.setBounds(cannons[n].xCoord, cannons[n].yCoord, 32, 32);
+                            }
+                            if(cannons[n].yCoord + cannonBallSpeed > gamePanel.TILE_SIZE * 15 - 20)
+                            {
+                                cannons[n].isShooting = false;
+                                cannons[n].cannonBallStillAlive = false;
+                                cannons[n].yCoord = 32;
+                                cannons[n].hitPlayer = false;
+                            }
+                        }
                     }
-                    if(cannons[n].yCoord + cannonBallSpeed > gamePanel.TILE_SIZE * 15 - 20)
-                    {
-                        cannons[n].isShooting = false;
-                        cannons[n].cannonBallStillAlive = false;
-                        cannons[n].yCoord = 32;
-                    }
+                    break;
                 }
-                break;
             }
         }
-    }
 
     public void DrawCannonBall(Graphics2D g2)
     {

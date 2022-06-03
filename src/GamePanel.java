@@ -10,6 +10,7 @@ public class GamePanel extends JPanel implements Runnable{
     private final int FPS = 60;
     private Thread gameThread;
     private KeyControls keyControl;
+    public Entities entity;
     public Player player;
     public TileManager tileManager;
     public CollisionChecker collisionChecker;
