@@ -70,7 +70,6 @@ public class CollisionChecker {
 
     public void checkProjectileCollision(Player player , Cannon cannon)
     {
-        /*
         int playerLeftHitboxX = player.xCoord + player.hitBox.x;
         int playerRightHitboxX = player.xCoord + player.hitBox.x + player.hitBox.width;
         int playerTopHitboxY = player.yCoord + player.hitBox.y;
@@ -81,7 +80,7 @@ public class CollisionChecker {
         int cannonBallRightHitBoxX =  cannon.xCoord + cannon.hitBox.x + cannon.hitBox.width;
         int cannonBallTopHitBoxX =  cannon.yCoord + cannon.hitBox.y;
         int cannonBallBottomHitBoxX =  cannon.yCoord + cannon.hitBox.y + cannon.hitBox.height;
-        */
+
         if(cannon.hitBox.intersects(player.hitBox))
         {
             cannon.hitPlayer = true;

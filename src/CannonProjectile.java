@@ -55,7 +55,6 @@ public class CannonProjectile extends Entities {
                         {
                             if(cannons[n].isShooting)
                             {
-                                System.out.println("a");
                                 cannons[n].yCoord += cannonBallSpeed;
                                 cannons[n].hitBox.setBounds(cannons[n].xCoord, cannons[n].yCoord, 32, 32);
                             }
