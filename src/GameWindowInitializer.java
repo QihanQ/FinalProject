@@ -7,7 +7,7 @@ public class GameWindowInitializer {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Game");
+        window.setTitle("Death Game");
 
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);

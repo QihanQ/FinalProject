@@ -7,6 +7,6 @@ public class Cannon extends Entities{
     public Cannon(int x, int y)
     {
         super(x,y);
-        hitBox = new Rectangle(x, y, 32, 32);
+        hitBox = new Rectangle(8, 8, 32, 32);
     }
 }

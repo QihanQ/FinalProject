@@ -70,20 +70,12 @@ public class CollisionChecker {
 
     public void checkProjectileCollision(Player player , Cannon cannon)
     {
-        int playerLeftHitboxX = player.xCoord + player.hitBox.x;
-        int playerRightHitboxX = player.xCoord + player.hitBox.x + player.hitBox.width;
-        int playerTopHitboxY = player.yCoord + player.hitBox.y;
-        int playerBottomHitboxY = player.yCoord + player.hitBox.y + player.hitBox.height;
-
-
-        int cannonBallLeftHitBoxX =  cannon.xCoord + cannon.hitBox.x;
-        int cannonBallRightHitBoxX =  cannon.xCoord + cannon.hitBox.x + cannon.hitBox.width;
-        int cannonBallTopHitBoxX =  cannon.yCoord + cannon.hitBox.y;
-        int cannonBallBottomHitBoxX =  cannon.yCoord + cannon.hitBox.y + cannon.hitBox.height;
-
-        if(cannon.hitBox.intersects(player.hitBox))
-        {
-            cannon.hitPlayer = true;
-        }
+        boolean collisionX = player.xCoord + player.hitBox.width >= cannon.xCoord &&
+                cannon.xCoord + cannon.hitBox.width >= player.xCoord;
+        // collision y-axis?
+        boolean collisionY = player.yCoord + player.hitBox.height >= cannon.hitBox.y &&
+                cannon.yCoord + cannon.hitBox.height >= player.yCoord;
+        // collision only if on both axes
+        cannon.hitPlayer = collisionX && collisionY;
     }
 }

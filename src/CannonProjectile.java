@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class CannonProjectile extends Entities {
     private BufferedImage cannonBall;
+    private BufferedImage explosion;
     private GamePanel gamePanel;
     public Cannon[] cannons;
     private int cannonBallSpeed;
@@ -38,6 +39,7 @@ public class CannonProjectile extends Entities {
     public void getCannonBallImage() {
         try {
             cannonBall = ImageIO.read(new File("Projectile/cannonProjectile.png"));
+            explosion = ImageIO.read(new File("Projectile/explosion.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,15 +80,20 @@ public class CannonProjectile extends Entities {
         {
             int rand = (int)(Math.random() * 100 + 1);
             {
-                if(rand >98 && cannons[n].cannonBallStillAlive == false)
+                if(rand > 97 && cannons[n].cannonBallStillAlive == false)
                 {
                    cannons[n].isShooting = true;
                    cannons[n].cannonBallStillAlive = true;
                 }
             }
-            if(cannons[n].isShooting)
+            if(cannons[n].isShooting && cannons[n].hitPlayer == false)
             {
                 g2.drawImage(cannonBall, cannons[n].xCoord, cannons[n].yCoord, gamePanel.TILE_SIZE, gamePanel.TILE_SIZE, null);
+            }
+            else if(cannons[n].isShooting && cannons[n].hitPlayer)
+            {
+                g2.drawImage(explosion, cannons[n].xCoord, cannons[n].yCoord, 2 * gamePanel.TILE_SIZE, 2 * gamePanel.TILE_SIZE, null);
+
             }
         }
     }
