@@ -10,11 +10,11 @@ public class GamePanel extends JPanel implements Runnable{
     private final int FPS = 60;
     private Thread gameThread;
     private KeyControls keyControl;
-    public Entities entity;
     public Player player;
     public TileManager tileManager;
     public CollisionChecker collisionChecker;
     public CannonProjectile cannonProjectile;
+
     public GamePanel()
     {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));

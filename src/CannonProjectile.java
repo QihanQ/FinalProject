@@ -93,7 +93,7 @@ public class CannonProjectile extends Entities {
             else if(cannons[n].isShooting && cannons[n].hitPlayer)
             {
                 g2.drawImage(explosion, cannons[n].xCoord, cannons[n].yCoord, 2 * gamePanel.TILE_SIZE, 2 * gamePanel.TILE_SIZE, null);
-
+                gamePanel.player.isDead = true;
             }
         }
     }

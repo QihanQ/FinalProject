@@ -19,6 +19,7 @@ public class Player extends Entities {
     private BufferedImage right1;
     private BufferedImage right2;
     private BufferedImage right3;
+    public boolean isDead;
 
     public Player(GamePanel g, KeyControls k)
     {
@@ -83,7 +84,7 @@ public class Player extends Entities {
             collisionOn = false;
             gp.collisionChecker.checkTileCollision(this);
 
-            if(collisionOn == false)
+            if(collisionOn == false && !isDead)
             {
                 switch(direction)
                 {
