@@ -4,18 +4,19 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class CannonProjectile extends Entities {
+public class CannonProjectile extends Cannon {
     private BufferedImage cannonBall;
     private BufferedImage explosion;
     private GamePanel gamePanel;
     public Cannon[] cannons;
     private int cannonBallSpeed;
     public CannonProjectile(GamePanel gp) {
+        super();
         gamePanel = gp;
-        getCannonBallImage();
+        getCannonBallImages();
         direction = "down";
         initializeCannons();
-        cannonBallSpeed = 5;
+        cannonBallSpeed = 6;
     }
 
     public void initializeCannons()
@@ -36,7 +37,7 @@ public class CannonProjectile extends Entities {
         cannons[12] = new Cannon(48 + 48 * 12, 32);
         cannons[13] = new Cannon(48 + 48 * 13, 32);
     }
-    public void getCannonBallImage() {
+    public void getCannonBallImages() {
         try {
             cannonBall = ImageIO.read(new File("Projectile/cannonProjectile.png"));
             explosion = ImageIO.read(new File("Projectile/explosion.png"));
@@ -80,7 +81,7 @@ public class CannonProjectile extends Entities {
         {
             int rand = (int)(Math.random() * 100 + 1);
             {
-                if(rand > 97 && cannons[n].cannonBallStillAlive == false)
+                if(rand > 98 && cannons[n].cannonBallStillAlive == false)
                 {
                    cannons[n].isShooting = true;
                    cannons[n].cannonBallStillAlive = true;
@@ -94,6 +95,7 @@ public class CannonProjectile extends Entities {
             {
                 g2.drawImage(explosion, cannons[n].xCoord, cannons[n].yCoord, 2 * gamePanel.TILE_SIZE, 2 * gamePanel.TILE_SIZE, null);
                 gamePanel.player.isDead = true;
+                gamePanel.gameOver = true;
             }
         }
     }

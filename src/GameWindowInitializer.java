@@ -5,9 +5,9 @@ public class GameWindowInitializer {
     public GameWindowInitializer()
     {
         JFrame window = new JFrame();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Death Game");
+        window.setTitle("Avoid the Cannon Ball Game");
 
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
@@ -16,6 +16,7 @@ public class GameWindowInitializer {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
+        gamePanel.playMusic(0);
         gamePanel.startGameThread();
     }
 

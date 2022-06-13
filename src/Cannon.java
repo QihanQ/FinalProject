@@ -9,4 +9,8 @@ public class Cannon extends Entities{
         super(x,y);
         hitBox = new Rectangle(8, 8, 32, 32);
     }
+
+    public Cannon() {
+
+    }
 }

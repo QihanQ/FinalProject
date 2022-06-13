@@ -1,8 +1,6 @@
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class Entities {
-    public GamePanel gamePanel;
     public int xCoord;
     public int yCoord;
     public int speed;

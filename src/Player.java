@@ -10,7 +10,7 @@ public class Player extends Entities {
     private BufferedImage up1;
     private BufferedImage up2;
     private BufferedImage up3;
-    private BufferedImage down1;
+    public BufferedImage down1;
     private BufferedImage down2;
     private BufferedImage down3;
     private BufferedImage left1;
@@ -27,8 +27,8 @@ public class Player extends Entities {
         key = k;
         direction = "down";
         getPlayerImage();
-        xCoord = 384;
-        yCoord = 384;
+        xCoord = 336;
+        yCoord = 520;
         speed = 5;
         hitBox = new Rectangle();
         hitBox.x = 8;
@@ -62,7 +62,7 @@ public class Player extends Entities {
 
     public void update()
     {
-        if(key.upPressed == true || key.downPressed == true || key.leftPressed == true || key.rightPressed == true)
+        if((key.upPressed == true || key.downPressed == true || key.leftPressed == true || key.rightPressed == true)&& !isDead && !gp.onTitleScreen)
         {
             if(key.upPressed)
             {
