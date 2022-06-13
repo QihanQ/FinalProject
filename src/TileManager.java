@@ -2,7 +2,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.*;
 
-public class TileManager {
+public class TileManager{
     private GamePanel gamePanel;
 
     public BackgroundTile[] mapTiles;

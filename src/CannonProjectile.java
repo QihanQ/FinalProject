@@ -4,14 +4,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class CannonProjectile extends Cannon {
+public class CannonProjectile extends Entities {
     private BufferedImage cannonBall;
     private BufferedImage explosion;
     private GamePanel gamePanel;
     public Cannon[] cannons;
     private int cannonBallSpeed;
     public CannonProjectile(GamePanel gp) {
-        super();
         gamePanel = gp;
         getCannonBallImages();
         direction = "down";
